@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- saved from url=(0016)http://localhost -->
+    <!-- saved from url=(0014)about:internet -->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Zipcode Eligibility</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='./style.css'>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+
+<div class="jumbotron">
+        <h1 class="display-5 text-center">Bellwether Community Credit Union</h1>
+        <img class='head-logo rounded mx-auto d-block mb-3' src="./logo_blue.jpg"/>
+        <p class="lead text-center">Enter a zipcode below to check their eligibility for account opening.</p>
+        <hr class="my-4">
+        <div class="input-group mb-3 mt-3 zip-input">
+                <input id='zip-input' type="text" class="form-control" placeholder="Enter Zipcode" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="submit-button">Submit</button>
+                  <button class="btn btn-outline-secondary" type="button" id="clear-button">Clear</button>
+                </div>
+              </div>
+        
+        <h6 class='text-center'><u>History:</u></h6>
+        <div class='test-alert'>
+
+        </div>
+        </div>
+
+    <div class="container text-center">
+
+       
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const codeList = ["03031", "03032", "03033", "03034", "03036", "03037", "03038", "03040", "03041", "03042", "03043", "03044", "03045", "03046", "03047", "03048", "03049", "03051", "03052", "03053", "03054", "03055", "03057", "03060", "03061", "03062", "03063", "03064", "03070", "03071", "03073", "03076", "03077", "03079", "03082", "03084", "03086", "03087", "03101", "03102", "03103", "03104", "03105", "03106", "03107", "03108", "03109", "03110", "03111", "03215", "03216", "03217", "03218", "03220", "03221", "03222", "03223", "03224", "03225", "03226", "03227", "03229", "03230", "03231", "03233", "03234", "03235", "03237", "03238", "03240", "03241", "03242", "03243", "03244", "03245", "03246", "03247", "03249", "03251", "03252", "03253", "03254", "03255", "03256", "03257", "03258", "03259", "03260", "03261", "03262", "03263", "03264", "03266", "03268", "03269", "03272", "03273", "03274", "03275", "03276", "03278", "03279", "03280", "03281", "03282", "03284", "03287", "03289", "03290", "03291", "03293", "03298", "03299", "03301", "03302", "03303", "03304", "03305", "03307", "03431", "03435", "03440", "03441", "03442", "03443", "03444", "03445", "03446", "03447", "03448", "03449", "03450", "03451", "03452", "03455", "03456", "03457", "03458", "03461", "03462", "03464", "03465", "03466", "03467", "03468", "03469", "03470", "03561", "03570", "03574", "03575", "03576", "03579", "03580", "03581", "03582", "03583", "03584", "03585", "03586", "03588", "03589", "03590", "03592", "03593", "03595", "03597", "03598", "03601", "03602", "03603", "03604", "03605", "03607", "03608", "03609", "03740", "03741", "03743", "03745", "03746", "03748", "03749", "03750", "03751", "03752", "03753", "03754", "03755", "03756", "03765", "03766", "03768", "03769", "03770", "03771", "03773", "03774", "03777", "03779", "03780", "03781", "03782", "03784", "03785", "03801", "03802", "03803", "03804", "03805", "03809", "03810", "03811", "03812", "03813", "03814", "03815", "03816", "03817", "03818", "03819", "03820", "03821", "03822", "03823", "03824", "03825", "03826", "03827", "03830", "03832", "03833", "03835", "03836", "03837", "03838", "03839", "03840", "03841", "03842", "03843", "03844", "03845", "03846", "03847", "03848", "03849", "03850", "03851", "03852", "03853", "03854", "03855", "03856", "03857", "03858", "03859", "03860", "03862", "03864", "03865", "03866", "03867", "03868", "03869", "03870", "03871", "03872", "03873", "03874", "03875", "03878", "03882", "03883", "03884", "03885", "03886", "03887", "03890", "03894", "03896", "03897", "01810", "01830", "01832", "01833", "01834", "01835", "01840", "01841", "01843", "01844", "01845", "01860", "01901", "01902", "01904", "01905", "01906", "01907", "01908", "01913", "01915", "01921", "01922", "01923", "01929", "01930", "01938", "01940", "01944", "01945", "01949", "01950", "01951", "01952", "01960", "01966", "01969", "01970", "01982", "01983", "01984", "01985", "01831", "01842", "01885", "01903", "01931", "01936", "01937", "01961", "01965", "01971", "01812", "01899", "01910", "05501", "01431", "01432", "01434", "01450", "01460", "01463", "01464", "01469", "01474", "01701", "01702", "01718", "01719", "01720", "01721", "01730", "01731", "01741", "01742", "01746", "01748", "01749", "01752", "01754", "01760", "01770", "01773", "01775", "01776", "01778", "01801", "01803", "01821", "01824", "01826", "01827", "01850", "01851", "01852", "01854", "01862", "01863", "01864", "01867", "01876", "01879", "01880", "01886", "01887", "01890", "02138", "02139", "02140", "02141", "02142", "02143", "02144", "02145", "02148", "02149", "02155", "02176", "02180", "02420", "02421", "02451", "02452", "02453", "02458", "02459", "02460", "02461", "02462", "02464", "02465", "02466", "02467", "02468", "02472", "02474", "02476", "02478", "02493", "01472", "01703", "01704", "01705", "01784", "01822", "01853", "01865", "01866", "01888", "02153", "02156", "02238", "02454", "02455", "02456", "02471", "02475", "02479", "02495", "01470", "01471", "01805", "01813", "01815", "01889", "02477"]
+            
+    function logic() {
+        let zipcode = $('#zip-input').val().trim()
+        let len = zipcode.length;
+        var validate = new RegExp('^[0-9]*$')
+
+        function clearInput() {
+            $('#zip-input').val('')
+        }
+
+        if (validate.test(zipcode) && len === 5){
+            var eligible = codeList.indexOf(zipcode) > -1 //returns true or false
+
+            switch(eligible){
+                case true:
+                     clearInput()
+                     return $('.test-alert').prepend('<div class="alert alert-success text-center" role="alert">' + "The zip code entered: " + '<a target=_blank href=https://www.addresses.com/zip-code-lookup/' + zipcode + ">" + zipcode + "</a> is eligible </div>")
+                case false:
+                    clearInput()
+                    return $('.test-alert').prepend('<div class="alert alert-danger text-center" role="alert">' + "The zip code entered: " + '<a target=_blank href=https://www.addresses.com/zip-code-lookup/' + zipcode + ">" + zipcode + "</a> is not eligible </div>")
+            }
+        } else {
+            $('.test-alert').prepend('<div class="alert alert-danger text-center" role="alert"> Not recognized. Please enter a five digit zip code</div>')
+            clearInput()
+        }
+    } 
+            $('#zip-input').keydown(function(event){
+                if (event.keyCode === 13){
+                    logic()
+                } else {
+                    return
+                }
+            })
+
+            $('#submit-button').on('click', function(event) {
+                logic()
+            })
+            
+            $('#clear-button').on('click', function() {
+                $('.test-alert').empty()
+            })
+
+        })
+    </script>
+   
+
+</body>
+</html>
